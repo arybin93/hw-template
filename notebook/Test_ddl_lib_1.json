@@ -17,7 +17,7 @@
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "dcb4f50d-22bc-47a7-b5f4-28f7fb8c4c9f"
+				"spark.autotune.trackingId": "84447acc-b81b-46ce-9e86-6856ec0fe162"
 			}
 		},
 		"metadata": {
@@ -69,6 +69,81 @@
 					"print(main.test_func())"
 				],
 				"execution_count": 1
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"from ddm_example import main\r\n",
+					"\r\n",
+					"print(main.get_consumer_segments_by_demographic(\"test\", \"test2\"))"
+				],
+				"execution_count": 2
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"from pyspark.sql.types import StructType, StructField, StringType\r\n",
+					"\r\n",
+					"hotels_data = [\r\n",
+					"        (\"12588401\", \"119282001\", \"2020\", \"2002\", \"18\"),\r\n",
+					"        (\"12588401\", \"119282002\", \"2020\", \"2002\", \"18\"),\r\n",
+					"        (\"12588402\", \"119282003\", \"2020\", \"1997\", \"23\"),\r\n",
+					"        (\"12588402\", \"119282004\", \"2020\", \"1997\", \"23\"),\r\n",
+					"        (\"12588402\", \"119282005\", \"2020\", \"1997\", \"23\"),\r\n",
+					"    ]\r\n",
+					"\r\n",
+					"schema = StructType([\r\n",
+					"    StructField(\"consumer_id\", StringType(), True),\r\n",
+					"    StructField(\"txn_id\", StringType(), True),\r\n",
+					"    StructField(\"sale_year_int\", StringType(), True),\r\n",
+					"    StructField(\"birth_year\", StringType(), True),\r\n",
+					"    StructField(\"age_at_txn\", StringType(), True),\r\n",
+					"])\r\n",
+					"\r\n",
+					"df = spark.createDataFrame(data=hotels_data, schema=schema)\r\n",
+					""
+				],
+				"execution_count": 4
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"df.show(truncate=False)"
+				],
+				"execution_count": 5
 			}
 		]
 	}
