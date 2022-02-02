@@ -1,0 +1,75 @@
+{
+	"name": "Test_ddl_lib_1",
+	"properties": {
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "Spark2",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
+			"numExecutors": 2,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2",
+				"spark.autotune.trackingId": "dcb4f50d-22bc-47a7-b5f4-28f7fb8c4c9f"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"enableDebugMode": false,
+			"kernelspec": {
+				"name": "synapse_pyspark",
+				"display_name": "Synapse PySpark"
+			},
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/3b5976cc-7fc6-419e-b7d7-df60cff1a690/resourceGroups/rg-arybin-westeurope/providers/Microsoft.Synapse/workspaces/arybin-myworkspace/bigDataPools/Spark2",
+				"name": "Spark2",
+				"type": "Spark",
+				"endpoint": "https://arybin-myworkspace.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/Spark2",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net"
+				},
+				"sparkVersion": "3.1",
+				"nodeCount": 3,
+				"cores": 4,
+				"memory": 28,
+				"automaticScaleJobs": false
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"# Test uploaded package ddl_lib"
+				]
+			},
+			{
+				"cell_type": "code",
+				"source": [
+					"from ddm_example import main\r\n",
+					"\r\n",
+					"print(main.test_func())"
+				],
+				"execution_count": 1
+			}
+		]
+	}
+}
